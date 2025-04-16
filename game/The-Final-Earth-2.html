@@ -935,9 +935,9 @@
         <script>
            function loadMainGame()
            {
-                 var html = <iframe width="800" height="480" src="https://coolubg2.github.io/coolubg-list/the-final-earth-2/" scrolling="no" frameborder="0" allowtransparency="true" id="gameFrame" name="gameFrame"></iframe>">`;
-                 document.getElementById("loadgame").innerHTML = html;
-                 document.getElementById('loadgame').scrollIntoView();
+                 var html = `<iframe class="game-iframe iframeloader" id="game-area" src="https://coolubg2.github.io/coolubg-list/the-final-earth-2/" width="800" height="480" scrolling="none" frameborder="0" allowfullscreen="" tabindex="0"></iframe>`;
+            document.getElementById("loadgame").innerHTML = html;
+            document.getElementById('loadgame').scrollIntoView();
            }
            function open_fullscreen() {
                  let game = document.getElementById("game-area");

@@ -1,0 +1,152 @@
+<html lang="en">
+    <head>
+        <title>Tape Sort 3D | classroom 6x</title>
+        <meta charset="utf-8" />
+        <meta name="robots" content="noindex, nofollow, noodp, noydir" />
+        <meta name="viewport" content="width=device-width, maximum-scale=1.0, initial-scale=1.0, user-scalable=no, minimal-ui" />
+        <meta http-equiv="X-UA-Compatible" content="requiresActiveX=true,IE=Edge,chrome=1" />
+        <meta http-equiv="Content-Language" content="en-US" />
+        
+        <!-- Google AdSense -->
+        <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3186306879759990" crossorigin="anonymous"></script>
+        
+        <style>
+            * {
+                margin: 0;
+                padding: 0;
+                box-sizing: border-box;
+                font-family: "Helvetica Neue", "Calibri Light", Roboto, sans-serif;
+            }
+            
+            html, body {
+                background-color: #0b0b0e;
+                color: #fff;
+                padding-bottom: 30px;
+            }
+
+            /* Main Game Container */
+            .my-game-container {
+                max-width: 900px;
+                margin: 20px auto;
+                padding: 15px;
+                background-color: #0f0f14;
+                border-radius: 20px;
+                box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+            }
+
+            /* Game Frame - Aspect-ratio keeps proportions perfect */
+            .embed-box {
+                position: relative;
+                width: 100%;
+                aspect-ratio: 16 / 9;
+                background: #1a2a6c;
+                border-radius: 12px;
+                overflow: hidden;
+                border: 3px solid #1a2a6c;
+            }
+
+            .embed-box iframe {
+                position: absolute;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 100%;
+                border: 0;
+                touch-action: none;
+            }
+
+            /* Button Style */
+            .btn {
+                display: block;
+                width: 100%;
+                max-width: 300px;
+                margin: 20px auto 0;
+                padding: 15px;
+                background: #ffcc00;
+                color: #000;
+                border: none;
+                border-radius: 50px;
+                font-weight: 800;
+                cursor: pointer;
+                font-size: 16px;
+                text-transform: uppercase;
+                transition: transform 0.2s, background 0.3s;
+            }
+
+            .btn:active {
+                transform: scale(0.95);
+            }
+
+            /* Description Section Style */
+            .game-description-container {
+                max-width: 900px;
+                margin: 20px auto;
+                padding: 25px;
+                background-color: #16161f;
+                border-radius: 16px;
+                box-shadow: 0 5px 20px rgba(0,0,0,0.3);
+                border: 1px solid #232332;
+            }
+
+            .game-description-container h2 {
+                font-size: 22px;
+                margin-bottom: 12px;
+                color: #ffcc00;
+            }
+
+            .game-description-container p {
+                font-size: 15px;
+                line-height: 1.6;
+                color: #b3b3c1;
+                margin-bottom: 10px;
+            }
+
+            /* Mobile refinements */
+            @media (max-width: 600px) {
+                .my-game-container, .game-description-container { padding: 12px; margin: 10px; }
+                .btn { font-size: 14px; padding: 12px; }
+                .game-description-container h2 { font-size: 18px; }
+                .game-description-container p { font-size: 14px; }
+            }
+        </style>
+    </head>
+    <body>
+
+        <!-- New Game Player Container -->
+        <div class="my-game-container">
+            <div class="embed-box" id="game-wrapper">
+                <iframe id="game-frame" src="https://puzzle-delta-two.vercel.app/" allowfullscreen="true" scrolling="no"></iframe>
+            </div>
+
+            <button class="btn" onclick="toggleFullscreen()">⛶ FULLSCREEN</button>
+        </div>
+
+        <!-- Professional Description Box -->
+        <div class="game-description-container">
+            <h2>About Tape Sort 3D</h2>
+            <p>Welcome to <strong>Tape Sort 3D</strong> — an engaging, fun, and relaxing puzzle game designed to test your logic and organization skills! Dive into colorful levels where sorting and matching tapes becomes an addictive challenge.</p>
+            <p>Enjoy seamless gameplay directly in your browser, switch to full-screen mode for the ultimate experience, and challenge yourself to beat every stage!</p>
+        </div>
+
+        <script>
+            function toggleFullscreen() {
+                var elem = document.getElementById("game-wrapper");
+                if (elem.requestFullscreen) {
+                    elem.requestFullscreen();
+                } else if (elem.webkitRequestFullscreen) {
+                    elem.webkitRequestFullscreen();
+                }
+            }
+        </script>
+
+        <!-- Google tag (gtag.js) -->
+        <script async src="https://www.googletagmanager.com/gtag/js?id=G-857RZ7QDRN"></script>
+        <script>
+          window.dataLayer = window.dataLayer || [];
+          function gtag(){dataLayer.push(arguments);}
+          gtag('js', new Date());
+
+          gtag('config', 'G-857RZ7QDRN');
+        </script>
+    </body>
+</html>

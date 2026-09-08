@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="en-us">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, height=device-height, initial-scale=1.0, user-scalable=no, shrink-to-fit=yes">
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+
+  <title>Pistol Duel</title>
+
+  <link rel="canonical" href="https://www.meegames.com/en/game/3181-pistol-duel.html">
+  <link rel="shortcut icon" href="TemplateData/favicon.ico">
+  <link rel="stylesheet" href="TemplateData/style.css">
+  <link rel="manifest" href="manifest.webmanifest">
+
+  <style>
+    html,
+    body {
+      margin: 0;
+      padding: 0;
+      width: 100%;
+      height: 100%;
+      overflow: hidden;
+      background: #000;
+    }
+
+    #unity-container {
+      width: 100%;
+      height: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+      background: #000;
+    }
+
+    #unity-canvas {
+      width: 100%;
+      height: 100%;
+      display: block;
+      background: #000;
+      outline: none;
+    }
+
+    #unity-loading-bar {
+      position: absolute;
+      left: 50%;
+      top: 50%;
+      transform: translate(-50%, -50%);
+      width: min(80%, 500px);
+      z-index: 10;
+    }
+
+    #unity-progress-bar-empty {
+      width: 100%;
+      height: 10px;
+      background: rgba(255, 255, 255, 0.25);
+      border-radius: 5px;
+      overflow: hidden;
+    }
+
+    #unity-progress-bar-full {
+      width: 0%;
+      height: 100%;
+      background: #fff;
+      border-radius: 5px;
+      transition: width 0.1s linear;
+    }
+
+    #unity-warning {
+      position: absolute;
+      left: 0;
+      top: 0;
+      width: 100%;
+      z-index: 20;
+    }
+  </style>
+</head>
+
+<body>
+  <div id="unity-container">
+    <canvas id="unity-canvas" width="1080" height="1920" tabindex="-1"></canvas>
+
+    <div id="unity-loading-bar">
+      <div id="unity-logo"></div>
+
+      <div id="unity-progress-bar-empty">
+        <div id="unity-progress-bar-full"></div>
+      </div>
+    </div>
+
+    <div id="unity-warning"></div>
+  </div>
+
+  <script>
+    const container = document.querySelector("#unity-container");
+    const canvas = document.querySelector("#unity-canvas");
+    const loadingBar = document.querySelector("#unity-loading-bar");
+    const progressBarFull = document.querySelector("#unity-progress-bar-full");
+    const warningBanner = document.querySelector("#unity-warning");
+
+    function unityShowBanner(msg, type) {
+      const div = document.createElement("div");
+
+      div.textContent = msg;
+
+      if (type === "error") {
+        div.style.cssText =
+          "background:#d00;color:#fff;padding:10px;text-align:center;";
+      } else if (type === "warning") {
+        div.style.cssText =
+          "background:#ffc107;color:#000;padding:10px;text-align:center;";
+      }
+
+      warningBanner.appendChild(div);
+
+      if (type !== "error") {
+        setTimeout(() => {
+          if (div.parentNode === warningBanner) {
+            warningBanner.removeChild(div);
+          }
+
+          warningBanner.style.display =
+            warningBanner.children.length ? "block" : "none";
+        }, 5000);
+      }
+
+      warningBanner.style.display = "block";
+    }
+
+    const buildUrl = "Build";
+
+    const loaderUrl =
+      buildUrl + "/7cc5518192e766bff3cb6ec6264e94d6.loader.js";
+
+    const config = {
+      arguments: [],
+
+      dataUrl:
+        buildUrl + "/7486367236846da724355bd5b38ee544.data",
+
+      frameworkUrl:
+        buildUrl + "/9fbb4e2cc6396041e7129260a36d9794.framework.js",
+
+      codeUrl:
+        buildUrl + "/1f5ded6b91158340ac0930ad8bd2a432.wasm",
+
+      streamingAssetsUrl: "StreamingAssets",
+
+      companyName: "duelgames",
+      productName: "pistol duel",
+      productVersion: "0.1.0",
+
+      showBanner: unityShowBanner
+    };
+
+    loadingBar.style.display = "block";
+
+    const script = document.createElement("script");
+
+    script.src = loaderUrl;
+
+    script.onload = () => {
+      createUnityInstance(
+        canvas,
+        config,
+        (progress) => {
+          progressBarFull.style.width = (100 * progress) + "%";
+        }
+      )
+      .then((unityInstance) => {
+        loadingBar.style.display = "none";
+      })
+      .catch((message) => {
+        unityShowBanner(
+          "Unity failed to load: " + message,
+          "error"
+        );
+
+        console.error(message);
+      });
+    };
+
+    script.onerror = () => {
+      unityShowBanner(
+        "Failed to load Unity loader: " + loaderUrl,
+        "error"
+      );
+    };
+
+    document.body.appendChild(script);
+  </script>
+</body>
+</html>
